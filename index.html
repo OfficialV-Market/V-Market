@@ -1,1 +1,1066 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>V-Market | Har Zaroorat, Ek Jagah.</title>
+
+<meta name="description"
+content="V-Market - Shopping, Grocery, Food, Resell & Earn and Delivery platform.">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+    --orange:#ff6b00;
+    --orange2:#ff8a00;
+    --navy:#10243e;
+    --text:#172033;
+    --muted:#687386;
+    --bg:#f6f7f9;
+    --white:#ffffff;
+    --green:#16a34a;
+    --red:#ef4444;
+    --shadow:0 8px 25px rgba(16,36,62,.08);
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    padding-bottom:75px;
+}
+
+button{
+    font-family:inherit;
+    border:0;
+    cursor:pointer;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+/* HEADER */
+
+.header{
+    background:var(--white);
+    position:sticky;
+    top:0;
+    z-index:1000;
+    box-shadow:0 2px 12px rgba(0,0,0,.07);
+}
+
+.header-top{
+    max-width:1200px;
+    margin:auto;
+    padding:12px 18px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
+}
+
+.logo-area{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    min-width:160px;
+}
+
+.logo-box{
+    width:43px;
+    height:43px;
+    border-radius:13px;
+    background:linear-gradient(135deg,var(--orange),var(--orange2));
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:white;
+    font-size:25px;
+    font-weight:900;
+    box-shadow:0 5px 12px rgba(255,107,0,.25);
+}
+
+.logo-text{
+    font-size:22px;
+    font-weight:900;
+    color:var(--navy);
+}
+
+.logo-text span{
+    color:var(--orange);
+}
+
+.location{
+    display:flex;
+    align-items:center;
+    gap:5px;
+    color:var(--muted);
+    font-size:13px;
+    cursor:pointer;
+}
+
+.header-actions{
+    display:flex;
+    gap:8px;
+}
+
+.icon-btn{
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    background:#f1f3f6;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:18px;
+    position:relative;
+}
+
+.cart-count{
+    position:absolute;
+    top:-3px;
+    right:-2px;
+    background:var(--orange);
+    color:white;
+    width:18px;
+    height:18px;
+    border-radius:50%;
+    font-size:10px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+/* SEARCH */
+
+.search-wrap{
+    max-width:1200px;
+    margin:auto;
+    padding:0 18px 12px;
+}
+
+.search{
+    background:#f1f3f6;
+    border:1px solid #e4e7eb;
+    height:47px;
+    border-radius:13px;
+    display:flex;
+    align-items:center;
+    padding:0 14px;
+    gap:10px;
+}
+
+.search span{
+    font-size:20px;
+}
+
+.search input{
+    flex:1;
+    border:0;
+    outline:0;
+    background:transparent;
+    font-size:14px;
+}
+
+/* MAIN */
+
+.container{
+    max-width:1200px;
+    margin:auto;
+    padding:18px;
+}
+
+/* HERO */
+
+.hero{
+    min-height:250px;
+    border-radius:22px;
+    overflow:hidden;
+    background:
+    radial-gradient(circle at 80% 20%,rgba(255,255,255,.25),transparent 25%),
+    linear-gradient(135deg,#ff6b00,#ff9200 48%,#10243e);
+    color:white;
+    display:flex;
+    align-items:center;
+    padding:30px;
+    position:relative;
+    box-shadow:var(--shadow);
+}
+
+.hero-content{
+    max-width:560px;
+    position:relative;
+    z-index:2;
+}
+
+.hero small{
+    font-weight:bold;
+    letter-spacing:1px;
+    opacity:.9;
+}
+
+.hero h1{
+    font-size:36px;
+    line-height:1.08;
+    margin:8px 0;
+}
+
+.hero p{
+    opacity:.92;
+    margin-bottom:18px;
+}
+
+.primary-btn{
+    background:white;
+    color:var(--navy);
+    padding:12px 20px;
+    border-radius:10px;
+    font-weight:bold;
+}
+
+.hero-art{
+    position:absolute;
+    right:35px;
+    font-size:80px;
+    display:flex;
+    gap:8px;
+    opacity:.95;
+}
+
+/* SECTION */
+
+.section{
+    margin-top:25px;
+}
+
+.section-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:14px;
+}
+
+.section-head h2{
+    font-size:20px;
+}
+
+.see-all{
+    color:var(--orange);
+    font-weight:bold;
+    font-size:13px;
+}
+
+/* SERVICE CARDS */
+
+.services{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:12px;
+}
+
+.service{
+    background:white;
+    border-radius:16px;
+    padding:18px 10px;
+    text-align:center;
+    box-shadow:var(--shadow);
+    cursor:pointer;
+    transition:.2s;
+}
+
+.service:hover{
+    transform:translateY(-3px);
+}
+
+.service-icon{
+    width:55px;
+    height:55px;
+    border-radius:16px;
+    margin:0 auto 9px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:28px;
+    background:#fff2e8;
+}
+
+.service h3{
+    font-size:14px;
+}
+
+.service p{
+    font-size:10px;
+    color:var(--muted);
+    margin-top:4px;
+}
+
+/* CATEGORY */
+
+.categories{
+    display:flex;
+    gap:12px;
+    overflow-x:auto;
+    padding-bottom:5px;
+}
+
+.categories::-webkit-scrollbar{
+    display:none;
+}
+
+.category{
+    min-width:78px;
+    text-align:center;
+    cursor:pointer;
+}
+
+.category-icon{
+    width:62px;
+    height:62px;
+    background:white;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:27px;
+    margin:auto;
+    box-shadow:var(--shadow);
+}
+
+.category p{
+    font-size:12px;
+    margin-top:7px;
+    font-weight:bold;
+}
+
+/* DEAL BANNER */
+
+.deal-banner{
+    border-radius:18px;
+    padding:20px;
+    color:white;
+    background:linear-gradient(120deg,#10243e,#1c3c61);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    overflow:hidden;
+}
+
+.deal-banner h2{
+    font-size:23px;
+    margin-bottom:5px;
+}
+
+.deal-banner p{
+    opacity:.85;
+    font-size:13px;
+}
+
+.deal-btn{
+    background:var(--orange);
+    color:white;
+    padding:10px 15px;
+    border-radius:9px;
+    font-weight:bold;
+}
+
+/* PRODUCTS */
+
+.products{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+}
+
+.product{
+    background:white;
+    border-radius:16px;
+    overflow:hidden;
+    box-shadow:var(--shadow);
+    position:relative;
+}
+
+.product-img{
+    height:170px;
+    background:linear-gradient(135deg,#eef2f5,#fff);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:65px;
+    position:relative;
+}
+
+.discount{
+    position:absolute;
+    left:8px;
+    top:8px;
+    background:var(--green);
+    color:white;
+    font-size:10px;
+    padding:5px 7px;
+    border-radius:5px;
+}
+
+.heart{
+    position:absolute;
+    right:8px;
+    top:8px;
+    width:30px;
+    height:30px;
+    border-radius:50%;
+    background:white;
+    box-shadow:0 3px 10px rgba(0,0,0,.1);
+}
+
+.product-info{
+    padding:12px;
+}
+
+.product-name{
+    font-weight:bold;
+    font-size:14px;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+.rating{
+    color:#f59e0b;
+    font-size:12px;
+    margin:6px 0;
+}
+
+.price{
+    font-weight:900;
+    font-size:17px;
+}
+
+.old-price{
+    color:#8a93a1;
+    text-decoration:line-through;
+    font-size:12px;
+    margin-left:5px;
+}
+
+.add-btn{
+    margin-top:9px;
+    width:100%;
+    padding:9px;
+    background:#fff2e8;
+    color:var(--orange);
+    border-radius:8px;
+    font-weight:bold;
+}
+
+/* FEATURE CARDS */
+
+.features{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:14px;
+}
+
+.feature{
+    background:white;
+    padding:20px;
+    border-radius:16px;
+    box-shadow:var(--shadow);
+    display:flex;
+    gap:14px;
+    align-items:center;
+}
+
+.feature-icon{
+    font-size:32px;
+}
+
+.feature h3{
+    font-size:15px;
+}
+
+.feature p{
+    color:var(--muted);
+    font-size:11px;
+    margin-top:4px;
+}
+
+/* RESELL */
+
+.resell{
+    background:linear-gradient(135deg,#ff6b00,#ff9c2e);
+    color:white;
+    border-radius:20px;
+    padding:25px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    overflow:hidden;
+}
+
+.resell h2{
+    font-size:25px;
+    margin-bottom:7px;
+}
+
+.resell p{
+    opacity:.9;
+    font-size:13px;
+    margin-bottom:14px;
+}
+
+.resell button{
+    background:white;
+    color:var(--orange);
+    padding:11px 18px;
+    border-radius:9px;
+    font-weight:bold;
+}
+
+.resell-art{
+    font-size:80px;
+}
+
+/* SOCIAL */
+
+.social{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+}
+
+.social a{
+    background:white;
+    border-radius:14px;
+    padding:16px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    box-shadow:var(--shadow);
+    font-weight:bold;
+}
+
+.social-icon{
+    width:40px;
+    height:40px;
+    border-radius:10px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:20px;
+    background:#f1f3f6;
+}
+
+/* FOOTER */
+
+.footer{
+    max-width:1200px;
+    margin:30px auto 0;
+    padding:25px 18px;
+    text-align:center;
+    color:var(--muted);
+    font-size:12px;
+}
+
+.footer strong{
+    color:var(--navy);
+}
+
+/* BOTTOM NAV */
+
+.bottom-nav{
+    position:fixed;
+    bottom:0;
+    left:0;
+    right:0;
+    background:white;
+    height:67px;
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+    box-shadow:0 -5px 20px rgba(0,0,0,.1);
+    z-index:999;
+}
+
+.nav-item{
+    color:#7a8492;
+    font-size:11px;
+    text-align:center;
+    cursor:pointer;
+}
+
+.nav-item div{
+    font-size:20px;
+    margin-bottom:3px;
+}
+
+.nav-item.active{
+    color:var(--orange);
+    font-weight:bold;
+}
+
+/* MOBILE */
+
+@media(max-width:800px){
+
+    .header-top{
+        padding:10px 12px;
+    }
+
+    .logo-text{
+        font-size:19px;
+    }
+
+    .location{
+        display:none;
+    }
+
+    .container{
+        padding:12px;
+    }
+
+    .hero{
+        min-height:220px;
+        padding:22px;
+    }
+
+    .hero h1{
+        font-size:27px;
+    }
+
+    .hero-art{
+        right:-15px;
+        font-size:55px;
+        opacity:.25;
+        flex-direction:column;
+    }
+
+    .services{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .services .service:last-child{
+        grid-column:span 2;
+    }
+
+    .products{
+        grid-template-columns:repeat(2,1fr);
+        gap:10px;
+    }
+
+    .product-img{
+        height:145px;
+    }
+
+    .features{
+        grid-template-columns:1fr;
+    }
+
+    .social{
+        grid-template-columns:1fr;
+    }
+
+    .deal-banner{
+        padding:17px;
+    }
+
+    .deal-banner h2{
+        font-size:19px;
+    }
+
+    .resell-art{
+        font-size:55px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<header class="header">
+
+    <div class="header-top">
+
+        <div class="logo-area">
+            <div class="logo-box">V</div>
+
+            <div>
+                <div class="logo-text">
+                    <span>V</span>-MARKET
+                </div>
+            </div>
+        </div>
+
+        <div class="location">
+            📍 <span id="locationText">Select Location</span>
+        </div>
+
+        <div class="header-actions">
+            <button class="icon-btn" onclick="showMessage('Notifications coming soon')">
+                🔔
+            </button>
+
+            <button class="icon-btn" onclick="openCart()">
+                🛒
+                <span class="cart-count" id="cartCount">0</span>
+            </button>
+        </div>
+
+    </div>
+
+    <div class="search-wrap">
+        <div class="search">
+            <span>🔍</span>
+            <input
+                type="search"
+                id="searchInput"
+                placeholder="Search products, food & groceries..."
+                oninput="searchProducts()"
+            >
+        </div>
+    </div>
+
+</header>
+
+
+<main class="container">
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <small>WELCOME TO V-MARKET</small>
+
+            <h1>
+                Har Zaroorat,<br>
+                Ek Jagah.
+            </h1>
+
+            <p>
+                Shop products, order groceries & food,
+                and earn through reselling.
+            </p>
+
+            <button class="primary-btn"
+                    onclick="scrollToSection('productsSection')">
+                Explore Now →
+            </button>
+
+        </div>
+
+        <div class="hero-art">
+            🛍️ 🥦 🍔 📦
+        </div>
+
+    </section>
+
+
+    <!-- SERVICES -->
+
+    <section class="section">
+
+        <div class="section-head">
+            <h2>What do you need?</h2>
+        </div>
+
+        <div class="services">
+
+            <div class="service"
+                 onclick="showMessage('Shopping section coming soon')">
+                <div class="service-icon">🛍️</div>
+                <h3>Shopping</h3>
+                <p>Products & Deals</p>
+            </div>
+
+            <div class="service"
+                 onclick="showMessage('Grocery section coming soon')">
+                <div class="service-icon">🥦</div>
+                <h3>Grocery</h3>
+                <p>Daily Essentials</p>
+            </div>
+
+            <div class="service"
+                 onclick="showMessage('Food section coming soon')">
+                <div class="service-icon">🍔</div>
+                <h3>Food</h3>
+                <p>Order Your Food</p>
+            </div>
+
+            <div class="service"
+                 onclick="scrollToSection('resellSection')">
+                <div class="service-icon">🔄</div>
+                <h3>Resell & Earn</h3>
+                <p>Earn Without Stock</p>
+            </div>
+
+            <div class="service"
+                 onclick="showMessage('Delivery section coming soon')">
+                <div class="service-icon">🚚</div>
+                <h3>Delivery</h3>
+                <p>Fast & Reliable</p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CATEGORIES -->
+
+    <section class="section">
+
+        <div class="section-head">
+            <h2>Popular Categories</h2>
+            <span class="see-all">See All</span>
+        </div>
+
+        <div class="categories">
+
+            <div class="category">
+                <div class="category-icon">👕</div>
+                <p>Fashion</p>
+            </div>
+
+            <div class="category">
+                <div class="category-icon">📱</div>
+                <p>Electronics</p>
+            </div>
+
+            <div class="category">
+                <div class="category-icon">💄</div>
+                <p>Beauty</p>
+            </div>
+
+            <div class="category">
+                <div class="category-icon">🏠</div>
+                <p>Home</p>
+            </div>
+
+            <div class="category">
+                <div class="category-icon">👟</div>
+                <p>Shoes</p>
+            </div>
+
+            <div class="category">
+                <div class="category-icon">💎</div>
+                <p>Jewellery</p>
+            </div>
+
+            <div class="category">
+                <div class="category-icon">🎮</div>
+                <p>Gaming</p>
+            </div>
+
+            <div class="category">
+                <div class="category-icon">⚽</div>
+                <p>Sports</p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- DEAL -->
+
+    <section class="section">
+
+        <div class="deal-banner">
+
+            <div>
+                <h2>🔥 Today's Deals</h2>
+                <p>Great products. Better prices.</p>
+            </div>
+
+            <button class="deal-btn"
+                    onclick="scrollToSection('productsSection')">
+                Shop Now
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- PRODUCTS -->
+
+    <section class="section" id="productsSection">
+
+        <div class="section-head">
+            <h2>⭐ Best Sellers</h2>
+            <span class="see-all">View All</span>
+        </div>
+
+        <div class="products" id="productList">
+
+            <div class="product" data-name="Wireless Earbuds">
+
+                <div class="product-img">
+                    🎧
+                    <span class="discount">20% OFF</span>
+                    <button class="heart"
+                            onclick="showMessage('Added to wishlist ❤️')">
+                        ♡
+                    </button>
+                </div>
+
+                <div class="product-info">
+
+                    <div class="product-name">
+                        Wireless Bluetooth Earbuds
+                    </div>
+
+                    <div class="rating">
+                        ★★★★★ 4.5
+                    </div>
+
+                    <div>
+                        <span class="price">₹799</span>
+                        <span class="old-price">₹999</span>
+                    </div>
+
+                    <button class="add-btn"
+                            onclick="addToCart('Wireless Bluetooth Earbuds',799)">
+                        + Add to Cart
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="product" data-name="Smart Watch">
+
+                <div class="product-img">
+                    ⌚
+                    <span class="discount">25% OFF</span>
+                    <button class="heart"
+                            onclick="showMessage('Added to wishlist ❤️')">
+                        ♡
+                    </button>
+                </div>
+
+                <div class="product-info">
+
+                    <div class="product-name">
+                        Smart Fitness Watch
+                    </div>
+
+                    <div class="rating">
+                        ★★★★☆ 4.2
+                    </div>
+
+                    <div>
+                        <span class="price">₹1,199</span>
+                        <span class="old-price">₹1,599</span>
+                    </div>
+
+                    <button class="add-btn"
+                            onclick="addToCart('Smart Fitness Watch',1199)">
+                        + Add to Cart
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="product" data-name="T Shirt">
+
+                <div class="product-img">
+                    👕
+                    <span class="discount">30% OFF</span>
+                    <button class="heart"
+                            onclick="showMessage('Added to wishlist ❤️')">
+                        ♡
+                    </button>
+                </div>
+
+                <div class="product-info">
+
+                    <div class="product-name">
+                        Premium Men's T-Shirt
+                    </div>
+
+                    <div class="rating">
+                        ★★★★★ 4.6
+                    </div>
+
+                    <div>
+                        <span class="price">₹399</span>
+                        <span class="old-price">₹599</span>
+                    </div>
+
+                    <button class="add-btn"
+                            onclick="addToCart('Premium Mens T-Shirt',399)">
+                        + Add to Cart
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="product" data-name="Kitchen Set">
+
+                <div class="product-img">
+                    🍳
+                    <span class="discount">15% OFF</span>
+                    <button class="heart"
+                            onclick="showMessage('Added to wishlist ❤️')">
+                        ♡
+                    </button>
+                </div>
+
+                <div class="product-info">
+
+                    <div class="product-name">
+                        Kitchen Essentials Set
+                    </div>
+
+                    <div class="rating">
+                        ★★★★☆ 4.1
+                    </div>
+
+                    <div>
+                        <span class="price">₹599</span>
+                        <span class="old-price">₹699</span>
+                    </div>
+
+                    <button class="add-btn"
+                            onclick="addToCart('Kitchen Essentials Set',599)">
+                        + Add to Cart
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- RESELL -->
+
+    <section class="section" id="resellSection">
+
+        <div class="resell">
+
+            <div>
+
+                <h2>🔄 Resell & Earn</h2>
+
+                <p>
+                    No Stock • Set Your Margin • Share • Earn
+          
