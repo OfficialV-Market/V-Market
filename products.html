@@ -1377,24 +1377,7 @@ function updateCartCount(){
 
 function openCart(){
 
-    if(cart.length === 0){
-
-        showToast("आपका cart खाली है 🛒");
-
-        return;
-    }
-
-    let total = cart.reduce(
-        (sum,item)=>sum + item.price,
-        0
-    );
-
-    showToast(
-        "Cart में " +
-        cart.length +
-        " item • Total ₹" +
-        total
-    );
+    window.location.href = "cart.html";
 
 }
 
