@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Checkout | V-Market</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+    font-family:Arial,sans-serif;
+    background:#f5f6f8;
+    color:#172033;
+}
+
+.header{
+    background:#fff;
+    padding:14px 18px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    box-shadow:0 2px 12px rgba(0,0,0,.08);
+    position:sticky;
+    top:0;
+    z-index:10;
+}
+
+.logo{
+    font-size:22px;
+    font-weight:900;
+    text-decoration:none;
+    color:#10243e;
+}
+
+.logo span{color:#ff6b00}
+
+.back{
+    color:#ff6b00;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.container{
+    max-width:1000px;
+    margin:auto;
+    padding:20px 15px 40px;
+}
+
+h1{margin-bottom:20px}
+
+.grid{
+    display:grid;
+    grid-template-columns:1.5fr 1fr;
+    gap:20px;
+}
+
+.card{
+    background:#fff;
+    padding:20px;
+    border-radius:16px;
+    box-shadow:0 4px 15px rgba(0,0,0,.05);
+    margin-bottom:15px;
+}
+
+.card h2{
+    margin-bottom:16px;
+    font-size:20px;
+}
+
+.form-group{
+    margin-bottom:14px;
+}
+
+label{
+    display:block;
+    font-weight:bold;
+    margin-bottom:6px;
+    font-size:14px;
+}
+
+input,textarea,select{
+    width:100%;
+    padding:13px;
+    border:1px solid #ddd;
+    border-radius:9px;
+    outline:none;
+    font-size:14px;
+}
+
+input:focus,textarea:focus,select:focus{
+    border-color:#ff6b00;
+}
+
+textarea{
+    min-height:90px;
+    resize:vertical;
+}
+
+.row{
+    display:flex;
+    justify-content:space-between;
+    margin:11px 0;
+}
+
+.total{
+    border-top:1px solid #ddd;
+    padding-top:15px;
+    font-size:21px;
+    font-weight:bold;
+}
+
+.place-order{
+    width:100%;
+    padding:15px;
+    border:0;
+    border-radius:10px;
+    background:#ff6b00;
+    color:white;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+    margin-top:15px;
+}
+
+.order-item{
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+    padding:10px 0;
+    border-bottom:1px solid #eee;
+    font-size:14px;
+}
+
+.empty{
+    background:white;
+    padding:50px 20px;
+    border-radius:16px;
+    text-align:center;
+}
+
+@media(max-width:700px){
+    .grid{
+        grid-template-columns:1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+
+    <a href="index.html" class="logo">
+        <span>V</span>-MARKET
+    </a>
+
+    <a href="cart.html" class="back">
+        ← Cart
+    </a>
+
+</header>
+
+<main class="container">
+
+    <h1>📦 Checkout</h1>
+
+    <div id="checkoutContent"></div>
+
+</main>
+
+<script>
+
+function getCart(){
+
+    return JSON.parse(
+        localStorage.getItem("vmarket_cart") || "[]"
+    );
+
+}
+
+
+function renderCheckout(){
+
+    const cart = getCart();
+
+    const content =
+        document.getElementById("checkoutContent");
+
+
+    if(cart.length === 0){
+
+        content.innerHTML = `
+
+            <div class="empty">
+
+                <h2>🛒 Cart खाली है</h2>
+
+                <p style="margin:10px 0 20px;color:#777;">
+                    पहले कुछ products cart में add करें।
+                </p>
+
+                <a href="products.html"
+                   style="
+                   display:inline-block;
+                   padding:12px 22px;
+                   background:#ff6b00;
+                   color:#fff;
+                   border-radius:10px;
+                   text-decoration:none;
+                   font-weight:bold;">
+                    Shopping शुरू करें
+                </a>
+
+            </div>
+
+        `;
+
+        return;
+    }
+
+
+    let subtotal = 0;
+
+    cart.forEach(item => {
+        subtotal +=
+            Number(item.price) *
+            Number(item.quantity || 1);
+    });
+
+
+    const delivery =
+        subtotal >= 499 ? 0 : 40;
+
+    const total =
+        subtotal + delivery;
+
+
+    let itemsHTML = "";
+
+    cart.forEach(item => {
+
+        const quantity =
+            Number(item.quantity || 1);
+
+        const itemTotal =
+            Number(item.price) * quantity;
+
+        itemsHTML += `
+
+            <div class="order-item">
+
+                <span>
+                    ${item.name}
+                    × ${quantity}
+                </span>
+
+                <strong>
+                    ₹${itemTotal.toLocaleString("en-IN")}
+                </strong>
+
+            </div>
+
+        `;
+
+    });
+
+
+    content.innerHTML = `
+
+        <div class="grid">
+
+            <div>
+
+                <div class="card">
+
+                    <h2>👤 Customer Details</h2>
+
+                    <div class="form-group">
+                        <label>Full Name *</label>
+                        <input
+                            id="customerName"
+                            type="text"
+                            placeholder="अपना नाम लिखें"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label>Mobile Number *</label>
+                        <input
+                            id="mobile"
+                            type="tel"
+                            maxlength="10"
+                            placeholder="10 digit mobile number"
+                        >
+                    </div>
+
+                </div>
+
+
+                <div class="card">
+
+                    <h2>📍 Delivery Address</h2>
+
+                    <div class="form-group">
+                        <label>House / Street / Area *</label>
+                        <textarea
+                            id="address"
+                            placeholder="पूरा पता लिखें">
+                        </textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>City *</label>
+                        <input
+                            id="city"
+                            type="text"
+                            placeholder="City"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label>State *</label>
+                        <input
+                            id="state"
+                            type="text"
+                            placeholder="State"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label>PIN Code *</label>
+                        <input
+                            id="pincode"
+                            type="tel"
+                            maxlength="6"
+                            placeholder="6 digit PIN"
+                        >
+                    </div>
+
+                </div>
+
+
+                <div class="card">
+
+                    <h2>💳 Payment Method</h2>
+
+                    <div class="form-group">
+
+                        <select id="payment">
+
+                            <option value="">
+                                Select Payment Method
+                            </option>
+
+                            <option value="cod">
+                                Cash on Delivery
+                            </option>
+
+                            <option value="online">
+                                Online Payment
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div>
+
+                <div class="card">
+
+                    <h2>🛍️ Order Summary</h2>
+
+                    ${itemsHTML}
+
+                    <div class="row">
+                        <span>Subtotal</span>
+                        <strong>
+                            ₹${subtotal.toLocaleString("en-IN")}
+                        </strong>
+                    </div>
+
+                    <div class="row">
+                        <span>Delivery</span>
+                        <strong>
+                            ${delivery === 0 ? "FREE" : "₹40"}
+                        </strong>
+                    </div>
+
+                    <div class="row total">
+                        <span>Total</span>
+                        <strong>
+                            ₹${total.toLocaleString("en-IN")}
+                        </strong>
+                    </div>
+
+                    <button
+                        class="place-order"
+                        onclick="placeOrder()">
+                        📦 Place Order
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    `;
+
+}
+
+
+function placeOrder(){
+
+    const name =
+        document.getElementById("customerName").value.trim();
+
+    const mobile =
+        document.getElementById("mobile").value.trim();
+
+    const address =
+        document.getElementById("address").value.trim();
+
+    const city =
+        document.getElementById("city").value.trim();
+
+    const state =
+        document.getElementById("state").value.trim();
+
+    const pincode =
+        document.getElementById("pincode").value.trim();
+
+    const payment =
+        document.getElementById("payment").value;
+
+
+    if(!name ||
+       !mobile ||
+       !address ||
+       !city ||
+       !state ||
+       !pincode ||
+       !payment){
+
+        alert("कृपया सभी जरूरी जानकारी भरें।");
+
+        return;
+    }
+
+
+    if(!/^[0-9]{10}$/.test(mobile)){
+
+        alert("कृपया सही 10 digit mobile number डालें।");
+
+        return;
+    }
+
+
+    if(!/^[0-9]{6}$/.test(pincode)){
+
+        alert("कृपया सही 6 digit PIN code डालें।");
+
+        return;
+    }
+
+
+    const cart = getCart();
+
+    let subtotal = 0;
+
+    cart.forEach(item => {
+
+        subtotal +=
+            Number(item.price) *
+            Number(item.quantity || 1);
+
+    });
+
+
+    const delivery =
+        subtotal >= 499 ? 0 : 40;
+
+    const total =
+        subtotal + delivery;
+
+
+    const order = {
+
+        orderId:
+            "VM" +
+            Date.now(),
+
+        customer:{
+
+            name:name,
+
+            mobile:mobile,
+
+            address:address,
+
+            city:city,
+
+            state:state,
+
+            pincode:pincode
+
+        },
+
+        items:cart,
+
+        subtotal:subtotal,
+
+        delivery:delivery,
+
+        total:total,
+
+        paymentMethod:payment,
+
+        status:"Order Placed",
+
+        createdAt:
+            new Date().toISOString()
+
+    };
+
+
+    const orders =
+        JSON.parse(
+            localStorage.getItem("vmarket_orders") || "[]"
+        );
+
+
+    orders.push(order);
+
+
+    localStorage.setItem(
+        "vmarket_orders",
+        JSON.stringify(orders)
+    );
+
+
+    localStorage.removeItem("vmarket_cart");
+
+
+    localStorage.setItem(
+        "vmarket_last_order",
+        JSON.stringify(order)
+    );
+
+
+    alert(
+        "Order successfully placed! 🎉\n\n" +
+        "Order ID: " +
+        order.orderId
+    );
+
+
+    window.location.href =
+        "orders.html";
+
+}
+
+
+renderCheckout();
+
+</script>
+
+</body>
+</html>
