@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Cart | V-Market</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, sans-serif;
+    background:#f5f6f8;
+    color:#172033;
+    padding-bottom:30px;
+}
+
+.header{
+    background:#fff;
+    padding:14px 18px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    box-shadow:0 2px 12px rgba(0,0,0,.08);
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+.logo{
+    text-decoration:none;
+    font-size:22px;
+    font-weight:900;
+    color:#10243e;
+}
+
+.logo span{
+    color:#ff6b00;
+}
+
+.back{
+    text-decoration:none;
+    color:#ff6b00;
+    font-weight:bold;
+}
+
+.container{
+    max-width:1000px;
+    margin:auto;
+    padding:20px 15px;
+}
+
+h1{
+    margin-bottom:18px;
+}
+
+.cart-list{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+.cart-item{
+    background:#fff;
+    border-radius:15px;
+    padding:14px;
+    display:flex;
+    gap:15px;
+    align-items:center;
+    box-shadow:0 4px 15px rgba(0,0,0,.05);
+}
+
+.cart-image{
+    width:90px;
+    height:90px;
+    border-radius:12px;
+    object-fit:cover;
+    background:#eee;
+}
+
+.item-info{
+    flex:1;
+}
+
+.item-name{
+    font-weight:bold;
+    margin-bottom:6px;
+}
+
+.item-price{
+    color:#ff6b00;
+    font-size:18px;
+    font-weight:bold;
+}
+
+.quantity{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin-top:10px;
+}
+
+.quantity button{
+    width:30px;
+    height:30px;
+    border:0;
+    border-radius:7px;
+    background:#eee;
+    cursor:pointer;
+    font-size:17px;
+}
+
+.remove{
+    background:#ffe8e8 !important;
+    color:#e53935;
+    padding:8px 10px;
+    border-radius:8px;
+    margin-top:10px;
+}
+
+.summary{
+    background:#fff;
+    border-radius:16px;
+    padding:20px;
+    margin-top:20px;
+    box-shadow:0 4px 15px rgba(0,0,0,.05);
+}
+
+.row{
+    display:flex;
+    justify-content:space-between;
+    margin:10px 0;
+}
+
+.total{
+    border-top:1px solid #ddd;
+    padding-top:14px;
+    font-size:21px;
+    font-weight:bold;
+}
+
+.checkout{
+    width:100%;
+    margin-top:18px;
+    padding:14px;
+    background:#ff6b00;
+    color:white;
+    border:0;
+    border-radius:11px;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.clear{
+    width:100%;
+    margin-top:10px;
+    padding:12px;
+    background:#f1f1f1;
+    color:#333;
+    border:0;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+.empty{
+    background:#fff;
+    text-align:center;
+    padding:60px 20px;
+    border-radius:16px;
+}
+
+.empty-icon{
+    font-size:55px;
+    margin-bottom:12px;
+}
+
+@media(max-width:600px){
+
+    .cart-item{
+        align-items:flex-start;
+    }
+
+    .cart-image{
+        width:75px;
+        height:75px;
+    }
+
+    .item-name{
+        font-size:14px;
+    }
+
+    .item-price{
+        font-size:16px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+
+    <a href="index.html" class="logo">
+        <span>V</span>-MARKET
+    </a>
+
+    <a href="products.html" class="back">
+        ← Shopping
+    </a>
+
+</header>
+
+<main class="container">
+
+    <h1>🛒 My Cart</h1>
+
+    <div id="cartContent"></div>
+
+</main>
+
+<script>
+
+function getCart(){
+
+    return JSON.parse(
+        localStorage.getItem("vmarket_cart") || "[]"
+    );
+
+}
+
+
+function saveCart(cart){
+
+    localStorage.setItem(
+        "vmarket_cart",
+        JSON.stringify(cart)
+    );
+
+}
+
+
+function renderCart(){
+
+    const cart = getCart();
+
+    const content =
+        document.getElementById("cartContent");
+
+
+    if(cart.length === 0){
+
+        content.innerHTML = `
+
+            <div class="empty">
+
+                <div class="empty-icon">
+                    🛒
+                </div>
+
+                <h2>Your cart is empty</h2>
+
+                <p style="margin:8px 0 20px;color:#777;">
+                    Add some products to continue shopping.
+                </p>
+
+                <a href="products.html"
+                   style="
+                   display:inline-block;
+                   background:#ff6b00;
+                   color:white;
+                   padding:12px 22px;
+                   border-radius:10px;
+                   text-decoration:none;
+                   font-weight:bold;">
+                    Start Shopping
+                </a>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    let subtotal = 0;
+
+
+    let itemsHTML = `
+
+        <div class="cart-list">
+
+    `;
+
+
+    cart.forEach((item,index)=>{
+
+        const itemTotal =
+            Number(item.price) *
+            Number(item.quantity || 1);
+
+        subtotal += itemTotal;
+
+
+        itemsHTML += `
+
+            <div class="cart-item">
+
+                <img
+                    class="cart-image"
+                    src="${item.image || ''}"
+                    onerror="this.style.display='none'"
+                >
+
+                <div class="item-info">
+
+                    <div class="item-name">
+                        ${item.name}
+                    </div>
+
+                    <div class="item-price">
+                        ₹${Number(item.price).toLocaleString("en-IN")}
+                    </div>
+
+                    <div class="quantity">
+
+                        <button
+                            onclick="changeQuantity(${index},-1)">
+                            −
+                        </button>
+
+                        <strong>
+                            ${item.quantity || 1}
+                        </strong>
+
+                        <button
+                            onclick="changeQuantity(${index},1)">
+                            +
+                        </button>
+
+                    </div>
+
+                    <button
+                        class="remove"
+                        onclick="removeItem(${index})">
+                        🗑 Remove
+                    </button>
+
+                </div>
+
+            </div>
+
+        `;
+
+    });
+
+
+    itemsHTML += `</div>`;
+
+
+    const delivery =
+        subtotal >= 499 ? 0 : 40;
+
+    const total =
+        subtotal + delivery;
+
+
+    itemsHTML += `
+
+        <div class="summary">
+
+            <h2>Price Details</h2>
+
+            <div class="row">
+                <span>Subtotal</span>
+                <strong>
+                    ₹${subtotal.toLocaleString("en-IN")}
+                </strong>
+            </div>
+
+            <div class="row">
+                <span>Delivery</span>
+                <strong>
+                    ${delivery === 0 ? "FREE" : "₹40"}
+                </strong>
+            </div>
+
+            <div class="row total">
+                <span>Total</span>
+                <strong>
+                    ₹${total.toLocaleString("en-IN")}
+                </strong>
+            </div>
+
+            <button
+                class="checkout"
+                onclick="goToCheckout()">
+                Proceed to Checkout →
+            </button>
+
+            <button
+                class="clear"
+                onclick="clearCart()">
+                Clear Cart
+            </button>
+
+        </div>
+
+    `;
+
+
+    content.innerHTML = itemsHTML;
+
+}
+
+
+function changeQuantity(index,change){
+
+    const cart = getCart();
+
+    if(!cart[index]) return;
+
+
+    let quantity =
+        Number(cart[index].quantity || 1);
+
+    quantity += change;
+
+
+    if(quantity <= 0){
+
+        cart.splice(index,1);
+
+    }else{
+
+        cart[index].quantity = quantity;
+
+    }
+
+
+    saveCart(cart);
+
+    renderCart();
+
+}
+
+
+function removeItem(index){
+
+    const cart = getCart();
+
+    cart.splice(index,1);
+
+    saveCart(cart);
+
+    renderCart();
+
+}
+
+
+function clearCart(){
+
+    if(!confirm("क्या आप पूरा cart खाली करना चाहते हैं?")){
+        return;
+    }
+
+    localStorage.removeItem("vmarket_cart");
+
+    renderCart();
+
+}
+
+
+function goToCheckout(){
+
+    const cart = getCart();
+
+    if(cart.length === 0){
+
+        alert("Cart खाली है।");
+
+        return;
+
+    }
+
+    window.location.href =
+        "checkout.html";
+
+}
+
+
+renderCart();
+
+</script>
+
+</body>
+</html>
