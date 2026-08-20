@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -10,6 +11,11 @@
 content="V-Market - Shopping, Grocery, Food, Resell & Earn and Delivery platform.">
 
 <style>
+
+/* =========================
+   RESET
+========================= */
+
 *{
     margin:0;
     padding:0;
@@ -26,14 +32,19 @@ content="V-Market - Shopping, Grocery, Food, Resell & Earn and Delivery platform
     --white:#ffffff;
     --green:#16a34a;
     --red:#ef4444;
+    --border:#e5e7eb;
     --shadow:0 8px 25px rgba(16,36,62,.08);
+}
+
+html{
+    scroll-behavior:smooth;
 }
 
 body{
     font-family:Arial,Helvetica,sans-serif;
     background:var(--bg);
     color:var(--text);
-    padding-bottom:75px;
+    padding-bottom:80px;
 }
 
 button{
@@ -47,7 +58,9 @@ a{
     color:inherit;
 }
 
-/* HEADER */
+/* =========================
+   HEADER
+========================= */
 
 .header{
     background:var(--white);
@@ -124,14 +137,18 @@ a{
     position:relative;
 }
 
+.icon-btn:hover{
+    background:#e7eaee;
+}
+
 .cart-count{
     position:absolute;
     top:-3px;
     right:-2px;
     background:var(--orange);
     color:white;
-    width:18px;
-    height:18px;
+    width:19px;
+    height:19px;
     border-radius:50%;
     font-size:10px;
     display:flex;
@@ -139,7 +156,9 @@ a{
     justify-content:center;
 }
 
-/* SEARCH */
+/* =========================
+   SEARCH
+========================= */
 
 .search-wrap{
     max-width:1200px;
@@ -170,7 +189,9 @@ a{
     font-size:14px;
 }
 
-/* MAIN */
+/* =========================
+   MAIN
+========================= */
 
 .container{
     max-width:1200px;
@@ -178,15 +199,50 @@ a{
     padding:18px;
 }
 
-/* HERO */
+.section{
+    margin-top:25px;
+}
+
+.section-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:14px;
+}
+
+.section-head h2{
+    font-size:20px;
+}
+
+.see-all{
+    color:var(--orange);
+    font-weight:bold;
+    font-size:13px;
+    cursor:pointer;
+}
+
+/* =========================
+   HERO
+========================= */
 
 .hero{
-    min-height:250px;
+    min-height:280px;
     border-radius:22px;
     overflow:hidden;
+
     background:
-    radial-gradient(circle at 80% 20%,rgba(255,255,255,.25),transparent 25%),
-    linear-gradient(135deg,#ff6b00,#ff9200 48%,#10243e);
+    radial-gradient(
+        circle at 80% 20%,
+        rgba(255,255,255,.25),
+        transparent 25%
+    ),
+    linear-gradient(
+        135deg,
+        #ff6b00,
+        #ff9200 48%,
+        #10243e
+    );
+
     color:white;
     display:flex;
     align-items:center;
@@ -208,7 +264,7 @@ a{
 }
 
 .hero h1{
-    font-size:36px;
+    font-size:42px;
     line-height:1.08;
     margin:8px 0;
 }
@@ -216,6 +272,7 @@ a{
 .hero p{
     opacity:.92;
     margin-bottom:18px;
+    line-height:1.5;
 }
 
 .primary-btn{
@@ -224,6 +281,10 @@ a{
     padding:12px 20px;
     border-radius:10px;
     font-weight:bold;
+}
+
+.primary-btn:hover{
+    transform:translateY(-2px);
 }
 
 .hero-art{
@@ -235,30 +296,9 @@ a{
     opacity:.95;
 }
 
-/* SECTION */
-
-.section{
-    margin-top:25px;
-}
-
-.section-head{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    margin-bottom:14px;
-}
-
-.section-head h2{
-    font-size:20px;
-}
-
-.see-all{
-    color:var(--orange);
-    font-weight:bold;
-    font-size:13px;
-}
-
-/* SERVICE CARDS */
+/* =========================
+   SERVICES
+========================= */
 
 .services{
     display:grid;
@@ -302,7 +342,9 @@ a{
     margin-top:4px;
 }
 
-/* CATEGORY */
+/* =========================
+   CATEGORIES
+========================= */
 
 .categories{
     display:flex;
@@ -332,6 +374,11 @@ a{
     font-size:27px;
     margin:auto;
     box-shadow:var(--shadow);
+    transition:.2s;
+}
+
+.category:hover .category-icon{
+    transform:translateY(-3px);
 }
 
 .category p{
@@ -340,7 +387,9 @@ a{
     font-weight:bold;
 }
 
-/* DEAL BANNER */
+/* =========================
+   DEAL BANNER
+========================= */
 
 .deal-banner{
     border-radius:18px;
@@ -371,7 +420,9 @@ a{
     font-weight:bold;
 }
 
-/* PRODUCTS */
+/* =========================
+   PRODUCTS
+========================= */
 
 .products{
     display:grid;
@@ -385,6 +436,11 @@ a{
     overflow:hidden;
     box-shadow:var(--shadow);
     position:relative;
+    transition:.2s;
+}
+
+.product:hover{
+    transform:translateY(-3px);
 }
 
 .product-img{
@@ -412,11 +468,16 @@ a{
     position:absolute;
     right:8px;
     top:8px;
-    width:30px;
-    height:30px;
+    width:32px;
+    height:32px;
     border-radius:50%;
     background:white;
     box-shadow:0 3px 10px rgba(0,0,0,.1);
+    font-size:18px;
+}
+
+.heart.active{
+    color:var(--red);
 }
 
 .product-info{
@@ -459,7 +520,14 @@ a{
     font-weight:bold;
 }
 
-/* FEATURE CARDS */
+.add-btn:hover{
+    background:var(--orange);
+    color:white;
+}
+
+/* =========================
+   FEATURES
+========================= */
 
 .features{
     display:grid;
@@ -491,7 +559,9 @@ a{
     margin-top:4px;
 }
 
-/* RESELL */
+/* =========================
+   RESELL
+========================= */
 
 .resell{
     background:linear-gradient(135deg,#ff6b00,#ff9c2e);
@@ -527,7 +597,9 @@ a{
     font-size:80px;
 }
 
-/* SOCIAL */
+/* =========================
+   SOCIAL
+========================= */
 
 .social{
     display:grid;
@@ -557,7 +629,9 @@ a{
     background:#f1f3f6;
 }
 
-/* FOOTER */
+/* =========================
+   FOOTER
+========================= */
 
 .footer{
     max-width:1200px;
@@ -572,7 +646,9 @@ a{
     color:var(--navy);
 }
 
-/* BOTTOM NAV */
+/* =========================
+   BOTTOM NAV
+========================= */
 
 .bottom-nav{
     position:fixed;
@@ -605,7 +681,186 @@ a{
     font-weight:bold;
 }
 
-/* MOBILE */
+/* =========================
+   TOAST
+========================= */
+
+.toast{
+    position:fixed;
+    left:50%;
+    bottom:90px;
+    transform:translateX(-50%) translateY(20px);
+    background:#10243e;
+    color:white;
+    padding:12px 18px;
+    border-radius:10px;
+    z-index:10000;
+    opacity:0;
+    pointer-events:none;
+    transition:.3s;
+    max-width:90%;
+    text-align:center;
+    font-size:14px;
+}
+
+.toast.show{
+    opacity:1;
+    transform:translateX(-50%) translateY(0);
+}
+
+/* =========================
+   MODAL
+========================= */
+
+.modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.55);
+    z-index:9999;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:15px;
+}
+
+.modal.show{
+    display:flex;
+}
+
+.modal-box{
+    background:white;
+    width:100%;
+    max-width:500px;
+    max-height:85vh;
+    overflow:auto;
+    border-radius:20px;
+    padding:20px;
+}
+
+.modal-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:15px;
+}
+
+.close-btn{
+    width:35px;
+    height:35px;
+    border-radius:50%;
+    background:#f1f3f6;
+    font-size:18px;
+}
+
+/* =========================
+   CART
+========================= */
+
+.cart-item{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:12px 0;
+    border-bottom:1px solid var(--border);
+}
+
+.cart-item-icon{
+    width:45px;
+    height:45px;
+    background:#f4f5f7;
+    border-radius:10px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:24px;
+}
+
+.cart-item-info{
+    flex:1;
+}
+
+.cart-item-name{
+    font-weight:bold;
+    font-size:13px;
+}
+
+.cart-item-price{
+    color:var(--orange);
+    font-weight:bold;
+    margin-top:4px;
+    font-size:13px;
+}
+
+.qty{
+    display:flex;
+    align-items:center;
+    gap:7px;
+}
+
+.qty button{
+    width:27px;
+    height:27px;
+    border-radius:7px;
+    background:#f1f3f6;
+    font-weight:bold;
+}
+
+.cart-summary{
+    margin-top:18px;
+    padding-top:15px;
+    border-top:1px solid var(--border);
+}
+
+.summary-row{
+    display:flex;
+    justify-content:space-between;
+    margin:8px 0;
+}
+
+.total-row{
+    font-size:19px;
+    font-weight:900;
+    margin-top:12px;
+}
+
+.checkout-btn{
+    width:100%;
+    padding:13px;
+    background:var(--orange);
+    color:white;
+    border-radius:10px;
+    font-weight:bold;
+    margin-top:15px;
+}
+
+.empty-cart{
+    text-align:center;
+    padding:35px 10px;
+    color:var(--muted);
+}
+
+.empty-cart-icon{
+    font-size:50px;
+    margin-bottom:10px;
+}
+
+/* =========================
+   NO RESULT
+========================= */
+
+.no-results{
+    display:none;
+    grid-column:1/-1;
+    text-align:center;
+    padding:35px;
+    background:white;
+    border-radius:15px;
+    color:var(--muted);
+}
+
+/* =========================
+   MOBILE
+========================= */
 
 @media(max-width:800px){
 
@@ -626,18 +881,18 @@ a{
     }
 
     .hero{
-        min-height:220px;
+        min-height:240px;
         padding:22px;
     }
 
     .hero h1{
-        font-size:27px;
+        font-size:29px;
     }
 
     .hero-art{
         right:-15px;
         font-size:55px;
-        opacity:.25;
+        opacity:.22;
         flex-direction:column;
     }
 
@@ -677,390 +932,2104 @@ a{
     .resell-art{
         font-size:55px;
     }
+
+    .resell{
+        padding:20px;
+    }
+
+    .resell h2{
+        font-size:21px;
+    }
 }
+
+@media(max-width:430px){
+
+    .header-top{
+        gap:7px;
+    }
+
+    .logo-area{
+        min-width:auto;
+    }
+
+    .logo-box{
+        width:38px;
+        height:38px;
+    }
+
+    .logo-text{
+        font-size:17px;
+    }
+
+    .icon-btn{
+        width:36px;
+        height:36px;
+    }
+
+    .hero{
+        border-radius:18px;
+    }
+
+    .hero h1{
+        font-size:27px;
+    }
+
+    .service{
+        padding:15px 7px;
+    }
+
+    .service-icon{
+        width:48px;
+        height:48px;
+        font-size:24px;
+    }
+
+    .product-img{
+        height:125px;
+        font-size:50px;
+    }
+
+    .product-info{
+        padding:9px;
+    }
+
+    .product-name{
+        font-size:12px;
+    }
+
+    .price{
+        font-size:15px;
+    }
+
+}
+
 </style>
+
 </head>
 
 <body>
 
-<!-- HEADER -->
+
+<!-- =========================
+     HEADER
+========================= -->
 
 <header class="header">
 
     <div class="header-top">
 
         <div class="logo-area">
-            <div class="logo-box">V</div>
 
-            <div>
-                <div class="logo-text">
-                    <span>V</span>-MARKET
-                </div>
+            <div class="logo-box">
+                V
             </div>
+
+            <div class="logo-text">
+                <span>V</span>-MARKET
+            </div>
+
         </div>
 
-        <div class="location">
-            📍 <span id="locationText">Select Location</span>
+
+        <div
+            class="location"
+            onclick="selectLocation()"
+            title="Select location"
+        >
+
+            📍
+            <span id="locationText">
+                Select Location
+            </span>
+
         </div>
+
 
         <div class="header-actions">
-            <button class="icon-btn" onclick="showMessage('Notifications coming soon')">
+
+            <button
+                class="icon-btn"
+                onclick="showMessage('Notifications coming soon 🔔')"
+                aria-label="Notifications"
+            >
                 🔔
             </button>
 
-            <button class="icon-btn" onclick="openCart()">
+
+            <button
+                class="icon-btn"
+                onclick="openCart()"
+                aria-label="Cart"
+            >
+
                 🛒
-                <span class="cart-count" id="cartCount">0</span>
+
+                <span
+                    class="cart-count"
+                    id="cartCount"
+                >
+                    0
+                </span>
+
             </button>
+
         </div>
 
     </div>
 
+
     <div class="search-wrap">
+
         <div class="search">
-            <span>🔍</span>
+
+            <span>
+                🔍
+            </span>
+
             <input
                 type="search"
                 id="searchInput"
                 placeholder="Search products, food & groceries..."
-                oninput="searchProducts()"
+                autocomplete="off"
             >
+
         </div>
+
     </div>
 
 </header>
 
 
+<!-- =========================
+     MAIN
+========================= -->
+
 <main class="container">
 
-    <!-- HERO -->
 
-    <section class="hero">
+<!-- HERO -->
 
-        <div class="hero-content">
+<section class="hero">
 
-            <small>WELCOME TO V-MARKET</small>
+    <div class="hero-content">
 
-            <h1>
-                Har Zaroorat,<br>
-                Ek Jagah.
-            </h1>
+        <small>
+            WELCOME TO V-MARKET
+        </small>
+
+        <h1>
+            Har Zaroorat,<br>
+            Ek Jagah.
+        </h1>
+
+        <p>
+            Shop products, order groceries & food,
+            and earn through reselling.
+        </p>
+
+        <button
+            class="primary-btn"
+            onclick="scrollToSection('productsSection')"
+        >
+            Explore Now →
+        </button>
+
+    </div>
+
+
+    <div class="hero-art">
+        🛍️ 🥦 🍔 📦
+    </div>
+
+</section>
+
+
+
+<!-- SERVICES -->
+
+<section class="section">
+
+    <div class="section-head">
+
+        <h2>
+            What do you need?
+        </h2>
+
+    </div>
+
+
+    <div class="services">
+
+
+        <div
+            class="service"
+            onclick="scrollToSection('productsSection')"
+        >
+
+            <div class="service-icon">
+                🛍️
+            </div>
+
+            <h3>
+                Shopping
+            </h3>
 
             <p>
-                Shop products, order groceries & food,
-                and earn through reselling.
+                Products & Deals
             </p>
 
-            <button class="primary-btn"
-                    onclick="scrollToSection('productsSection')">
-                Explore Now →
+        </div>
+
+
+        <div
+            class="service"
+            onclick="showMessage('Grocery section coming soon 🥦')"
+        >
+
+            <div class="service-icon">
+                🥦
+            </div>
+
+            <h3>
+                Grocery
+            </h3>
+
+            <p>
+                Daily Essentials
+            </p>
+
+        </div>
+
+
+        <div
+            class="service"
+            onclick="showMessage('Food ordering section coming soon 🍔')"
+        >
+
+            <div class="service-icon">
+                🍔
+            </div>
+
+            <h3>
+                Food
+            </h3>
+
+            <p>
+                Order Your Food
+            </p>
+
+        </div>
+
+
+        <div
+            class="service"
+            onclick="scrollToSection('resellSection')"
+        >
+
+            <div class="service-icon">
+                🔄
+            </div>
+
+            <h3>
+                Resell & Earn
+            </h3>
+
+            <p>
+                Earn Without Stock
+            </p>
+
+        </div>
+
+
+        <div
+            class="service"
+            onclick="showMessage('Delivery section coming soon 🚚')"
+        >
+
+            <div class="service-icon">
+                🚚
+            </div>
+
+            <h3>
+                Delivery
+            </h3>
+
+            <p>
+                Fast & Reliable
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- CATEGORIES -->
+
+<section class="section">
+
+    <div class="section-head">
+
+        <h2>
+            Popular Categories
+        </h2>
+
+        <span
+            class="see-all"
+            onclick="showMessage('More categories coming soon')"
+        >
+            See All
+        </span>
+
+    </div>
+
+
+    <div class="categories">
+
+
+        <div
+            class="category"
+            onclick="filterCategory('fashion')"
+        >
+
+            <div class="category-icon">
+                👕
+            </div>
+
+            <p>
+                Fashion
+            </p>
+
+        </div>
+
+
+        <div
+            class="category"
+            onclick="filterCategory('electronics')"
+        >
+
+            <div class="category-icon">
+                📱
+            </div>
+
+            <p>
+                Electronics
+            </p>
+
+        </div>
+
+
+        <div
+            class="category"
+            onclick="filterCategory('beauty')"
+        >
+
+            <div class="category-icon">
+                💄
+            </div>
+
+            <p>
+                Beauty
+            </p>
+
+        </div>
+
+
+        <div
+            class="category"
+            onclick="filterCategory('home')"
+        >
+
+            <div class="category-icon">
+                🏠
+            </div>
+
+            <p>
+                Home
+            </p>
+
+        </div>
+
+
+        <div
+            class="category"
+            onclick="filterCategory('shoes')"
+        >
+
+            <div class="category-icon">
+                👟
+            </div>
+
+            <p>
+                Shoes
+            </p>
+
+        </div>
+
+
+        <div
+            class="category"
+            onclick="filterCategory('jewellery')"
+        >
+
+            <div class="category-icon">
+                💎
+            </div>
+
+            <p>
+                Jewellery
+            </p>
+
+        </div>
+
+
+        <div
+            class="category"
+            onclick="filterCategory('gaming')"
+        >
+
+            <div class="category-icon">
+                🎮
+            </div>
+
+            <p>
+                Gaming
+            </p>
+
+        </div>
+
+
+        <div
+            class="category"
+            onclick="filterCategory('sports')"
+        >
+
+            <div class="category-icon">
+                ⚽
+            </div>
+
+            <p>
+                Sports
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- DEAL -->
+
+<section class="section">
+
+    <div class="deal-banner">
+
+        <div>
+
+            <h2>
+                🔥 Today's Deals
+            </h2>
+
+            <p>
+                Great products. Better prices.
+            </p>
+
+        </div>
+
+        <button
+            class="deal-btn"
+            onclick="scrollToSection('productsSection')"
+        >
+            Shop Now
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- PRODUCTS -->
+
+<section
+    class="section"
+    id="productsSection"
+>
+
+    <div class="section-head">
+
+        <h2>
+            ⭐ Best Sellers
+        </h2>
+
+        <span
+            class="see-all"
+            onclick="clearSearch()"
+        >
+            View All
+        </span>
+
+    </div>
+
+
+    <div
+        class="products"
+        id="productList"
+    >
+
+
+        <!-- PRODUCT 1 -->
+
+        <div
+            class="product"
+            data-name="Wireless Bluetooth Earbuds"
+            data-category="electronics"
+        >
+
+            <div class="product-img">
+
+                🎧
+
+                <span class="discount">
+                    20% OFF
+                </span>
+
+                <button
+                    class="heart"
+                    onclick="toggleWishlist(this,'Wireless Bluetooth Earbuds')"
+                    aria-label="Wishlist"
+                >
+                    ♡
+                </button>
+
+            </div>
+
+
+            <div class="product-info">
+
+                <div class="product-name">
+                    Wireless Bluetooth Earbuds
+                </div>
+
+                <div class="rating">
+                    ★★★★★ 4.5
+                </div>
+
+                <div>
+
+                    <span class="price">
+                        ₹799
+                    </span>
+
+                    <span class="old-price">
+                        ₹999
+                    </span>
+
+                </div>
+
+                <button
+                    class="add-btn"
+                    onclick="addToCart('Wireless Bluetooth Earbuds',799,'🎧')"
+                >
+                    + Add to Cart
+                </button>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- PRODUCT 2 -->
+
+        <div
+            class="product"
+            data-name="Smart Fitness Watch"
+            data-category="electronics"
+        >
+
+            <div class="product-img">
+
+                ⌚
+
+                <span class="discount">
+                    25% OFF
+                </span>
+
+                <button
+                    class="heart"
+                    onclick="toggleWishlist(this,'Smart Fitness Watch')"
+                    aria-label="Wishlist"
+                >
+                    ♡
+                </button>
+
+            </div>
+
+
+            <div class="product-info">
+
+                <div class="product-name">
+                    Smart Fitness Watch
+                </div>
+
+                <div class="rating">
+                    ★★★★☆ 4.2
+                </div>
+
+                <div>
+
+                    <span class="price">
+                        ₹1,199
+                    </span>
+
+                    <span class="old-price">
+                        ₹1,599
+                    </span>
+
+                </div>
+
+                <button
+                    class="add-btn"
+                    onclick="addToCart('Smart Fitness Watch',1199,'⌚')"
+                >
+                    + Add to Cart
+                </button>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- PRODUCT 3 -->
+
+        <div
+            class="product"
+            data-name="Premium Men's T-Shirt"
+            data-category="fashion"
+        >
+
+            <div class="product-img">
+
+                👕
+
+                <span class="discount">
+                    30% OFF
+                </span>
+
+                <button
+                    class="heart"
+                    onclick="toggleWishlist(this,'Premium Mens T-Shirt')"
+                    aria-label="Wishlist"
+                >
+                    ♡
+                </button>
+
+            </div>
+
+
+            <div class="product-info">
+
+                <div class="product-name">
+                    Premium Men's T-Shirt
+                </div>
+
+                <div class="rating">
+                    ★★★★★ 4.6
+                </div>
+
+                <div>
+
+                    <span class="price">
+                        ₹399
+                    </span>
+
+                    <span class="old-price">
+                        ₹599
+                    </span>
+
+                </div>
+
+                <button
+                    class="add-btn"
+                    onclick="addToCart('Premium Mens T-Shirt',399,'👕')"
+                >
+                    + Add to Cart
+                </button>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- PRODUCT 4 -->
+
+        <div
+            class="product"
+            data-name="Kitchen Essentials Set"
+            data-category="home"
+        >
+
+            <div class="product-img">
+
+                🍳
+
+                <span class="discount">
+                    15% OFF
+                </span>
+
+                <button
+                    class="heart"
+                    onclick="toggleWishlist(this,'Kitchen Essentials Set')"
+                    aria-label="Wishlist"
+                >
+                    ♡
+                </button>
+
+            </div>
+
+
+            <div class="product-info">
+
+                <div class="product-name">
+                    Kitchen Essentials Set
+                </div>
+
+                <div class="rating">
+                    ★★★★☆ 4.1
+                </div>
+
+                <div>
+
+                    <span class="price">
+                        ₹599
+                    </span>
+
+                    <span class="old-price">
+                        ₹699
+                    </span>
+
+                </div>
+
+                <button
+                    class="add-btn"
+                    onclick="addToCart('Kitchen Essentials Set',599,'🍳')"
+                >
+                    + Add to Cart
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div
+            class="no-results"
+            id="noResults"
+        >
+            😔<br><br>
+            No products found.
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- RESELL -->
+
+<section
+    class="section"
+    id="resellSection"
+>
+
+    <div class="resell">
+
+        <div>
+
+            <h2>
+                🔄 Resell & Earn
+            </h2>
+
+            <p>
+                No Stock • Set Your Margin • Share • Earn
+            </p>
+
+            <button
+                onclick="showResell()"
+            >
+                Start Reselling →
             </button>
 
         </div>
 
-        <div class="hero-art">
-            🛍️ 🥦 🍔 📦
+
+        <div class="resell-art">
+            💰📦
         </div>
 
-    </section>
+    </div>
+
+</section>
 
 
-    <!-- SERVICES -->
 
-    <section class="section">
+<!-- FEATURES -->
 
-        <div class="section-head">
-            <h2>What do you need?</h2>
-        </div>
+<section class="section">
 
-        <div class="services">
+    <div class="section-head">
 
-            <div class="service"
-                 onclick="showMessage('Shopping section coming soon')">
-                <div class="service-icon">🛍️</div>
-                <h3>Shopping</h3>
-                <p>Products & Deals</p>
+        <h2>
+            Why V-Market?
+        </h2>
+
+    </div>
+
+
+    <div class="features">
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                🚚
             </div>
-
-            <div class="service"
-                 onclick="showMessage('Grocery section coming soon')">
-                <div class="service-icon">🥦</div>
-                <h3>Grocery</h3>
-                <p>Daily Essentials</p>
-            </div>
-
-            <div class="service"
-                 onclick="showMessage('Food section coming soon')">
-                <div class="service-icon">🍔</div>
-                <h3>Food</h3>
-                <p>Order Your Food</p>
-            </div>
-
-            <div class="service"
-                 onclick="scrollToSection('resellSection')">
-                <div class="service-icon">🔄</div>
-                <h3>Resell & Earn</h3>
-                <p>Earn Without Stock</p>
-            </div>
-
-            <div class="service"
-                 onclick="showMessage('Delivery section coming soon')">
-                <div class="service-icon">🚚</div>
-                <h3>Delivery</h3>
-                <p>Fast & Reliable</p>
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- CATEGORIES -->
-
-    <section class="section">
-
-        <div class="section-head">
-            <h2>Popular Categories</h2>
-            <span class="see-all">See All</span>
-        </div>
-
-        <div class="categories">
-
-            <div class="category">
-                <div class="category-icon">👕</div>
-                <p>Fashion</p>
-            </div>
-
-            <div class="category">
-                <div class="category-icon">📱</div>
-                <p>Electronics</p>
-            </div>
-
-            <div class="category">
-                <div class="category-icon">💄</div>
-                <p>Beauty</p>
-            </div>
-
-            <div class="category">
-                <div class="category-icon">🏠</div>
-                <p>Home</p>
-            </div>
-
-            <div class="category">
-                <div class="category-icon">👟</div>
-                <p>Shoes</p>
-            </div>
-
-            <div class="category">
-                <div class="category-icon">💎</div>
-                <p>Jewellery</p>
-            </div>
-
-            <div class="category">
-                <div class="category-icon">🎮</div>
-                <p>Gaming</p>
-            </div>
-
-            <div class="category">
-                <div class="category-icon">⚽</div>
-                <p>Sports</p>
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- DEAL -->
-
-    <section class="section">
-
-        <div class="deal-banner">
-
-            <div>
-                <h2>🔥 Today's Deals</h2>
-                <p>Great products. Better prices.</p>
-            </div>
-
-            <button class="deal-btn"
-                    onclick="scrollToSection('productsSection')">
-                Shop Now
-            </button>
-
-        </div>
-
-    </section>
-
-
-    <!-- PRODUCTS -->
-
-    <section class="section" id="productsSection">
-
-        <div class="section-head">
-            <h2>⭐ Best Sellers</h2>
-            <span class="see-all">View All</span>
-        </div>
-
-        <div class="products" id="productList">
-
-            <div class="product" data-name="Wireless Earbuds">
-
-                <div class="product-img">
-                    🎧
-                    <span class="discount">20% OFF</span>
-                    <button class="heart"
-                            onclick="showMessage('Added to wishlist ❤️')">
-                        ♡
-                    </button>
-                </div>
-
-                <div class="product-info">
-
-                    <div class="product-name">
-                        Wireless Bluetooth Earbuds
-                    </div>
-
-                    <div class="rating">
-                        ★★★★★ 4.5
-                    </div>
-
-                    <div>
-                        <span class="price">₹799</span>
-                        <span class="old-price">₹999</span>
-                    </div>
-
-                    <button class="add-btn"
-                            onclick="addToCart('Wireless Bluetooth Earbuds',799)">
-                        + Add to Cart
-                    </button>
-
-                </div>
-
-            </div>
-
-
-            <div class="product" data-name="Smart Watch">
-
-                <div class="product-img">
-                    ⌚
-                    <span class="discount">25% OFF</span>
-                    <button class="heart"
-                            onclick="showMessage('Added to wishlist ❤️')">
-                        ♡
-                    </button>
-                </div>
-
-                <div class="product-info">
-
-                    <div class="product-name">
-                        Smart Fitness Watch
-                    </div>
-
-                    <div class="rating">
-                        ★★★★☆ 4.2
-                    </div>
-
-                    <div>
-                        <span class="price">₹1,199</span>
-                        <span class="old-price">₹1,599</span>
-                    </div>
-
-                    <button class="add-btn"
-                            onclick="addToCart('Smart Fitness Watch',1199)">
-                        + Add to Cart
-                    </button>
-
-                </div>
-
-            </div>
-
-
-            <div class="product" data-name="T Shirt">
-
-                <div class="product-img">
-                    👕
-                    <span class="discount">30% OFF</span>
-                    <button class="heart"
-                            onclick="showMessage('Added to wishlist ❤️')">
-                        ♡
-                    </button>
-                </div>
-
-                <div class="product-info">
-
-                    <div class="product-name">
-                        Premium Men's T-Shirt
-                    </div>
-
-                    <div class="rating">
-                        ★★★★★ 4.6
-                    </div>
-
-                    <div>
-                        <span class="price">₹399</span>
-                        <span class="old-price">₹599</span>
-                    </div>
-
-                    <button class="add-btn"
-                            onclick="addToCart('Premium Mens T-Shirt',399)">
-                        + Add to Cart
-                    </button>
-
-                </div>
-
-            </div>
-
-
-            <div class="product" data-name="Kitchen Set">
-
-                <div class="product-img">
-                    🍳
-                    <span class="discount">15% OFF</span>
-                    <button class="heart"
-                            onclick="showMessage('Added to wishlist ❤️')">
-                        ♡
-                    </button>
-                </div>
-
-                <div class="product-info">
-
-                    <div class="product-name">
-                        Kitchen Essentials Set
-                    </div>
-
-                    <div class="rating">
-                        ★★★★☆ 4.1
-                    </div>
-
-                    <div>
-                        <span class="price">₹599</span>
-                        <span class="old-price">₹699</span>
-                    </div>
-
-                    <button class="add-btn"
-                            onclick="addToCart('Kitchen Essentials Set',599)">
-                        + Add to Cart
-                    </button>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- RESELL -->
-
-    <section class="section" id="resellSection">
-
-        <div class="resell">
 
             <div>
 
-                <h2>🔄 Resell & Earn</h2>
+                <h3>
+                    Fast Delivery
+                </h3>
 
                 <p>
-                    No Stock • Set Your Margin • Share • Earn
-          
+                    Quick and reliable delivery.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                🔒
+            </div>
+
+            <div>
+
+                <h3>
+                    Secure Shopping
+                </h3>
+
+                <p>
+                    Safe and simple shopping experience.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                💰
+            </div>
+
+            <div>
+
+                <h3>
+                    Resell & Earn
+                </h3>
+
+                <p>
+                    Share products and earn margin.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- SOCIAL -->
+
+<section class="section">
+
+    <div class="section-head">
+
+        <h2>
+            Connect With Us
+        </h2>
+
+    </div>
+
+
+    <div class="social">
+
+
+        <a
+            href="https://whatsapp.com/channel/0029VbEOLWl1iUxdE8af050C"
+            target="_blank"
+            rel="noopener"
+        >
+
+            <div class="social-icon">
+                💬
+            </div>
+
+            WhatsApp Channel
+
+        </a>
+
+
+        <a
+            href="https://t.me/VMarketUpdates"
+            target="_blank"
+            rel="noopener"
+        >
+
+            <div class="social-icon">
+                ✈️
+            </div>
+
+            Telegram
+
+        </a>
+
+
+        <a
+            href="https://www.youtube.com/@Trend_Vishal"
+            target="_blank"
+            rel="noopener"
+        >
+
+            <div class="social-icon">
+                ▶️
+            </div>
+
+            YouTube
+
+        </a>
+
+    </div>
+
+</section>
+
+
+
+<!-- FOOTER -->
+
+<footer class="footer">
+
+    <p>
+        © 2026
+        <strong>V-Market</strong>.
+        All Rights Reserved.
+    </p>
+
+    <p style="margin-top:6px;">
+        Har Zaroorat, Ek Jagah.
+    </p>
+
+</footer>
+
+
+</main>
+
+
+
+<!-- =========================
+     BOTTOM NAV
+========================= -->
+
+<nav class="bottom-nav">
+
+
+    <div
+        class="nav-item active"
+        onclick="goHome()"
+    >
+
+        <div>
+            🏠
+        </div>
+
+        Home
+
+    </div>
+
+
+    <div
+        class="nav-item"
+        onclick="scrollToSection('productsSection')"
+    >
+
+        <div>
+            🛍️
+        </div>
+
+        Shop
+
+    </div>
+
+
+    <div
+        class="nav-item"
+        onclick="openCart()"
+    >
+
+        <div>
+            🛒
+        </div>
+
+        Cart
+
+    </div>
+
+
+    <div
+        class="nav-item"
+        onclick="openAccount()"
+    >
+
+        <div>
+            👤
+        </div>
+
+        Account
+
+    </div>
+
+</nav>
+
+
+
+<!-- =========================
+     TOAST
+========================= -->
+
+<div
+    class="toast"
+    id="toast"
+>
+</div>
+
+
+
+<!-- =========================
+     CART MODAL
+========================= -->
+
+<div
+    class="modal"
+    id="cartModal"
+>
+
+    <div class="modal-box">
+
+        <div class="modal-header">
+
+            <h2>
+                🛒 My Cart
+            </h2>
+
+            <button
+                class="close-btn"
+                onclick="closeModal('cartModal')"
+            >
+                ✕
+            </button>
+
+        </div>
+
+
+        <div id="cartContent">
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================
+     ACCOUNT MODAL
+========================= -->
+
+<div
+    class="modal"
+    id="accountModal"
+>
+
+    <div class="modal-box">
+
+        <div class="modal-header">
+
+            <h2>
+                👤 My Account
+            </h2>
+
+            <button
+                class="close-btn"
+                onclick="closeModal('accountModal')"
+            >
+                ✕
+            </button>
+
+        </div>
+
+
+        <div style="text-align:center;padding:20px 5px;">
+
+            <div style="font-size:55px;">
+                👤
+            </div>
+
+            <h3 style="margin:10px 0;">
+                Welcome to V-Market
+            </h3>
+
+            <p style="color:#687386;font-size:13px;">
+                Account and order management will be
+                available soon.
+            </p>
+
+            <button
+                class="checkout-btn"
+                onclick="showMessage('Login system coming soon 🚀')"
+            >
+                Login / Register
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
+<script>
+
+/* =========================
+   STORAGE
+========================= */
+
+let cart = [];
+
+let wishlist = [];
+
+try{
+
+    cart =
+        JSON.parse(
+            localStorage.getItem("vmarket_cart")
+        ) || [];
+
+    wishlist =
+        JSON.parse(
+            localStorage.getItem("vmarket_wishlist")
+        ) || [];
+
+}catch(error){
+
+    cart = [];
+    wishlist = [];
+
+}
+
+
+/* =========================
+   SAVE DATA
+========================= */
+
+function saveCart(){
+
+    try{
+
+        localStorage.setItem(
+            "vmarket_cart",
+            JSON.stringify(cart)
+        );
+
+    }catch(error){
+
+        console.log("Cart storage unavailable");
+
+    }
+
+}
+
+
+function saveWishlist(){
+
+    try{
+
+        localStorage.setItem(
+            "vmarket_wishlist",
+            JSON.stringify(wishlist)
+        );
+
+    }catch(error){
+
+        console.log("Wishlist storage unavailable");
+
+    }
+
+}
+
+
+/* =========================
+   TOAST MESSAGE
+========================= */
+
+let toastTimer;
+
+function showMessage(message){
+
+    const toast =
+        document.getElementById("toast");
+
+    toast.innerHTML = message;
+
+    toast.classList.add("show");
+
+    clearTimeout(toastTimer);
+
+    toastTimer = setTimeout(function(){
+
+        toast.classList.remove("show");
+
+    },2500);
+
+}
+
+
+/* =========================
+   SCROLL
+========================= */
+
+function scrollToSection(id){
+
+    const section =
+        document.getElementById(id);
+
+    if(section){
+
+        section.scrollIntoView({
+            behavior:"smooth",
+            block:"start"
+        });
+
+    }
+
+}
+
+
+/* =========================
+   HOME
+========================= */
+
+function goHome(){
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =========================
+   ADD TO CART
+========================= */
+
+function addToCart(name,price,icon){
+
+    const existing =
+        cart.find(item => item.name === name);
+
+    if(existing){
+
+        existing.qty += 1;
+
+    }else{
+
+        cart.push({
+            name:name,
+            price:price,
+            icon:icon,
+            qty:1
+        });
+
+    }
+
+    saveCart();
+
+    updateCartCount();
+
+    showMessage(
+        "✅ " + name + " cart me add ho gaya"
+    );
+
+}
+
+
+/* =========================
+   CART COUNT
+========================= */
+
+function updateCartCount(){
+
+    const countElement =
+        document.getElementById("cartCount");
+
+    const totalQuantity =
+        cart.reduce(
+            (total,item) =>
+                total + Number(item.qty || 0),
+            0
+        );
+
+    countElement.textContent =
+        totalQuantity;
+
+}
+
+
+/* =========================
+   OPEN CART
+========================= */
+
+function openCart(){
+
+    renderCart();
+
+    document
+        .getElementById("cartModal")
+        .classList.add("show");
+
+}
+
+
+/* =========================
+   RENDER CART
+========================= */
+
+function renderCart(){
+
+    const content =
+        document.getElementById("cartContent");
+
+    if(cart.length === 0){
+
+        content.innerHTML = `
+
+            <div class="empty-cart">
+
+                <div class="empty-cart-icon">
+                    🛒
+                </div>
+
+                <h3>
+                    Your cart is empty
+                </h3>
+
+                <p style="margin-top:7px;">
+                    Add some products to continue.
+                </p>
+
+                <button
+                    class="checkout-btn"
+                    onclick="closeModal('cartModal');scrollToSection('productsSection')"
+                >
+                    Start Shopping
+                </button>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    let subtotal = 0;
+
+    let html = "";
+
+
+    cart.forEach(function(item,index){
+
+        const qty =
+            Number(item.qty || 1);
+
+        const itemTotal =
+            Number(item.price) * qty;
+
+        subtotal += itemTotal;
+
+
+        html += `
+
+            <div class="cart-item">
+
+                <div class="cart-item-icon">
+                    ${item.icon || "📦"}
+                </div>
+
+                <div class="cart-item-info">
+
+                    <div class="cart-item-name">
+                        ${escapeHtml(item.name)}
+                    </div>
+
+                    <div class="cart-item-price">
+                        ₹${Number(item.price).toLocaleString("en-IN")}
+                    </div>
+
+                </div>
+
+                <div class="qty">
+
+                    <button
+                        onclick="changeQuantity(${index},-1)"
+                    >
+                        −
+                    </button>
+
+                    <strong>
+                        ${qty}
+                    </strong>
+
+                    <button
+                        onclick="changeQuantity(${index},1)"
+                    >
+                        +
+                    </button>
+
+                </div>
+
+            </div>
+
+        `;
+
+    });
+
+
+    const delivery =
+        subtotal >= 499 ? 0 : 40;
+
+    const total =
+        subtotal + delivery;
+
+
+    html += `
+
+        <div class="cart-summary">
+
+            <div class="summary-row">
+
+                <span>
+                    Subtotal
+                </span>
+
+                <strong>
+                    ₹${subtotal.toLocaleString("en-IN")}
+                </strong>
+
+            </div>
+
+
+            <div class="summary-row">
+
+                <span>
+                    Delivery
+                </span>
+
+                <strong>
+                    ${
+                        delivery === 0
+                        ? "FREE"
+                        : "₹" + delivery
+                    }
+                </strong>
+
+            </div>
+
+
+            <div class="summary-row total-row">
+
+                <span>
+                    Total
+                </span>
+
+                <strong style="color:#ff6b00;">
+                    ₹${total.toLocaleString("en-IN")}
+                </strong>
+
+            </div>
+
+
+            <button
+                class="checkout-btn"
+                onclick="checkout()"
+            >
+                Proceed to Checkout →
+            </button>
+
+
+            <button
+                onclick="clearCart()"
+                style="
+                    width:100%;
+                    margin-top:9px;
+                    padding:11px;
+                    background:#f1f3f6;
+                    color:#ef4444;
+                    border-radius:10px;
+                    font-weight:bold;
+                "
+            >
+                Clear Cart
+            </button>
+
+        </div>
+
+    `;
+
+
+    content.innerHTML = html;
+
+}
+
+
+/* =========================
+   CHANGE QUANTITY
+========================= */
+
+function changeQuantity(index,change){
+
+    if(!cart[index]){
+        return;
+    }
+
+    cart[index].qty += change;
+
+    if(cart[index].qty <= 0){
+
+        cart.splice(index,1);
+
+    }
+
+    saveCart();
+
+    updateCartCount();
+
+    renderCart();
+
+}
+
+
+/* =========================
+   CLEAR CART
+========================= */
+
+function clearCart(){
+
+    if(cart.length === 0){
+        return;
+    }
+
+    const confirmClear =
+        confirm(
+            "Kya aap cart empty karna chahte hain?"
+        );
+
+    if(!confirmClear){
+        return;
+    }
+
+    cart = [];
+
+    saveCart();
+
+    updateCartCount();
+
+    renderCart();
+
+    showMessage(
+        "Cart empty kar diya gaya 🛒"
+    );
+
+}
+
+
+/* =========================
+   CHECKOUT
+========================= */
+
+function checkout(){
+
+    if(cart.length === 0){
+
+        showMessage(
+            "Cart empty hai 🛒"
+        );
+
+        return;
+
+    }
+
+    showMessage(
+        "Checkout system jaldi available hoga 🚀"
+    );
+
+}
+
+
+/* =========================
+   CLOSE MODAL
+========================= */
+
+function closeModal(id){
+
+    const modal =
+        document.getElementById(id);
+
+    if(modal){
+
+        modal.classList.remove("show");
+
+    }
+
+}
+
+
+/* =========================
+   ACCOUNT
+========================= */
+
+function openAccount(){
+
+    document
+        .getElementById("accountModal")
+        .classList.add("show");
+
+}
+
+
+/* =========================
+   WISHLIST
+========================= */
+
+function toggleWishlist(button,name){
+
+    const index =
+        wishlist.indexOf(name);
+
+    if(index === -1){
+
+        wishlist.push(name);
+
+        button.classList.add("active");
+
+        button.innerHTML = "♥";
+
+        showMessage(
+            "❤️ Wishlist me add ho gaya"
+        );
+
+    }else{
+
+        wishlist.splice(index,1);
+
+        button.classList.remove("active");
+
+        button.innerHTML = "♡";
+
+        showMessage(
+            "Wishlist se remove ho gaya"
+        );
+
+    }
+
+    saveWishlist();
+
+}
+
+
+/* =========================
+   SEARCH
+========================= */
+
+function searchProducts(){
+
+    const input =
+        document.getElementById("searchInput");
+
+    const query =
+        input.value
+        .toLowerCase()
+        .trim();
+
+
+    const products =
+        document.querySelectorAll(
+            ".product"
+        );
+
+    let found = 0;
+
+
+    products.forEach(function(product){
+
+        const name =
+            (
+                product.dataset.name ||
+                ""
+            ).toLowerCase();
+
+
+        const category =
+            (
+                product.dataset.category ||
+                ""
+            ).toLowerCase();
+
+
+        if(
+            name.includes(query) ||
+            category.includes(query)
+        ){
+
+            product.style.display = "";
+
+            found++;
+
+        }else{
+
+            product.style.display = "none";
+
+        }
+
+    });
+
+
+    const noResults =
+        document.getElementById("noResults");
+
+
+    if(found === 0){
+
+        noResults.style.display =
+            "block";
+
+    }else{
+
+        noResults.style.display =
+            "none";
+
+    }
+
+}
+
+
+/* =========================
+   CLEAR SEARCH
+========================= */
+
+function clearSearch(){
+
+    const input =
+        document.getElementById("searchInput");
+
+    input.value = "";
+
+    searchProducts();
+
+    scrollToSection(
+        "productsSection"
+    );
+
+}
+
+
+/* =========================
+   CATEGORY FILTER
+========================= */
+
+function filterCategory(category){
+
+    const input =
+        document.getElementById("searchInput");
+
+    input.value = category;
+
+    searchProducts();
+
+    scrollToSection(
+        "productsSection"
+    );
+
+    showMessage(
+        "Category: " +
+        category
+    );
+
+}
+
+
+/* =========================
+   LOCATION
+========================= */
+
+function selectLocation(){
+
+    const location =
+        prompt(
+            "Apni city / area ka naam enter karein:"
+        );
+
+
+    if(
+        location &&
+        location.trim() !== ""
+    ){
+
+        const cleanLocation =
+            location.trim();
+
+
+        document.getElementById(
+            "locationText"
+        ).textContent =
+            cleanLocation;
+
+
+        try{
+
+            localStorage.setItem(
+                "vmarket_location",
+                cleanLocation
+            );
+
+        }catch(error){}
+
+
+        showMessage(
+            "📍 Location set: " +
+            escapeHtml(cleanLocation)
+        );
+
+    }
+
+}
+
+
+/* =========================
+   RESELL
+========================= */
+
+function showResell(){
+
+    showMessage(
+        "🔄 Resell & Earn system coming soon 🚀"
+    );
+
+}
+
+
+/* =========================
+   ESCAPE HTML
+========================= */
+
+function escapeHtml(value){
+
+    return String(value)
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+
+}
+
+
+/* =========================
+   MODAL OUTSIDE CLICK
+========================= */
+
+document
+    .querySelectorAll(".modal")
+    .forEach(function(modal){
+
+        modal.addEventListener(
+            "click",
+            function(event){
+
+                if(
+                    event.target === modal
+                ){
+
+                    modal.classList.remove(
+                        "show"
+                    );
+
+                }
+
+            }
+        );
+
+    });
+
+
+/* =========================
+   KEYBOARD ESC
+========================= */
+
+document.addEventListener(
+    "keydown",
+    function(event){
+
+        if(event.key === "Escape"){
+
+            document
+                .querySelectorAll(".modal.show")
+                .forEach(function(modal){
+
+                    modal.classList.remove(
+                        "show"
+                    );
+
+                });
+
+        }
+
+    }
+);
+
+
+/* =========================
+   RESTORE LOCATION
+========================= */
+
+function restoreLocation(){
+
+    try{
+
+        const saved =
+            localStorage.getItem(
+                "vmarket_location"
+            );
+
+
+        if(saved){
+
+            document.getElementById(
+                "locationText"
+            ).textContent =
+                saved;
+
+        }
+
+    }catch(error){}
+
+}
+
+
+/* =========================
+   RESTORE WISHLIST UI
+========================= */
+
+function restoreWishlistUI(){
+
+    document
+        .querySelectorAll(".heart")
+        .forEach(function(button){
+
+            const onclickText =
+                button.getAttribute(
+                    "onclick"
+                ) || "";
+
+
+            const match =
+                onclickText.match(
+                    /'([^']+)'/
+                );
+
+
+            if(!match){
+                return;
+            }
+
+
+            const name =
+                match[1];
+
+
+            if(
+                wishlist.includes(name)
+            ){
+
+                button.classList.add(
+                    "active"
+                );
+
+                button.innerHTML =
+                    "♥";
+
+            }
+
+        });
+
+}
+
+
+/* =========================
+   SEARCH EVENT
+========================= */
+
+document
+    .getElementById("searchInput")
+    .addEventListener(
+        "input",
+        searchProducts
+    );
+
+
+/* =========================
+   INITIALIZE
+========================= */
+
+updateCartCount();
+
+restoreLocation();
+
+restoreWishlistUI();
+
+
+</script>
+
+</body>
+</html>
